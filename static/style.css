@@ -10,15 +10,27 @@ h1 {
 .track {
   position: relative;
   width: 100%;
-  height: 700px;
+  height: 650px;
   margin: 20px auto;
   background: url('/static/racetrack.png') no-repeat center;
   background-size: cover;
   border: 2px solid #333;
 }
 
-.horse {
+.horse-container {
   position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.horse {
   width: 50px;
   transition: left 1s;
+}
+
+.horse-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
 }
