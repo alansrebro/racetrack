@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Client Status Racetrack</title>
+<title>Jason's Client Status Racetrack</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -17,13 +17,26 @@
       track.innerHTML = ''; // Clear old horses
 
       clients.forEach((client, index) => {
+        // Create a container for the horse and label
+        const container = document.createElement('div');
+        container.className = 'horse-container';
+        container.style.top = `${index * 60}px`;
+        container.style.left = `${client.status}%`;
+
+        // Horse image
         const horse = document.createElement('img');
         horse.src = '/static/horse.png';
         horse.className = 'horse';
-        horse.style.top = `${index * 60}px`;
-        horse.style.left = `${client.status}%`; // Move horse based on client status
         horse.title = `${client.name}: ${client.status}%`;
-        track.appendChild(horse);
+
+        // Label with client name
+        const label = document.createElement('span');
+        label.className = 'horse-label';
+        label.textContent = client.name;
+
+        container.appendChild(horse);
+        container.appendChild(label);
+        track.appendChild(container);
       });
     }
 
