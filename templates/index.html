@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Client Status Racetrack</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Client Status Racetrack</h1>
+  <div class="track" id="track"></div>
+
+  <script>
+    async function loadClients() {
+      const res = await fetch('/api/clients');
+      const clients = await res.json();
+      const track = document.getElementById('track');
+      track.innerHTML = ''; // Clear old horses
+
+      clients.forEach((client, index) => {
+        const horse = document.createElement('img');
+        horse.src = '/static/horse.png';
+        horse.className = 'horse';
+        horse.style.top = `${index * 60}px`;
+        horse.style.left = `${client.status}%`; // Move horse based on client status
+        horse.title = `${client.name}: ${client.status}%`;
+        track.appendChild(horse);
+      });
+    }
+
+    loadClients();
+    setInterval(loadClients, 5000); // Refresh every 5 seconds
+  </script>
+</body>
+</html>

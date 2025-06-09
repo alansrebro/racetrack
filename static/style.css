@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.track {
+  position: relative;
+  width: 90%;
+  height: 300px;
+  margin: 20px auto;
+  background: url('/static/racetrack.png') no-repeat center;
+  background-size: cover;
+  border: 2px solid #333;
+}
+
+.horse {
+  position: absolute;
+  width: 50px;
+  transition: left 1s;
+}
