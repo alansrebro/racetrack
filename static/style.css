@@ -9,7 +9,7 @@ h1 {
 
 .track {
   position: relative;
-  width: 90%;
+  width: 100%;
   height: 300px;
   margin: 20px auto;
   background: url('/static/racetrack.png') no-repeat center;
